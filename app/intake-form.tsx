@@ -1166,20 +1166,21 @@ export default function IntakeForm() {
       <div className="mobile-canvas">
         <header className="topbar">
           <div className="topbar-copy">
-            {step > 0 && (
+            {step === 0 ? (
+              <div>
+                <p className="eyebrow">咨询前信息采集</p>
+                <p className="brand-title">运动营养档案</p>
+              </div>
+            ) : (
               <button
                 className="back-button"
                 type="button"
                 aria-label="返回上一步"
                 onClick={() => moveTo(step - 1)}
               >
-                ←
+                <span className="chevron-left-icon" aria-hidden="true" />
               </button>
             )}
-            <div>
-              <p className="eyebrow">咨询前信息采集</p>
-              <p className="brand-title">运动营养档案</p>
-            </div>
           </div>
           <div
             className="step-count"

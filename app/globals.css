@@ -72,7 +72,7 @@ button:disabled {
 
 .topbar {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 20px;
   padding: 3px 2px 16px;
@@ -86,19 +86,38 @@ button:disabled {
 
 .back-button {
   display: grid;
-  width: 36px;
-  height: 36px;
+  width: 44px;
+  height: 44px;
   flex: 0 0 auto;
   place-items: center;
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.82);
-  color: var(--ink);
-  font-size: 19px;
+  padding: 0;
+  border: 0;
+  border-radius: 14px;
+  background: transparent;
+  color: var(--brand);
+  transition: background 160ms ease, transform 160ms ease;
+}
+
+.chevron-left-icon {
+  width: 11px;
+  height: 11px;
+  border-bottom: 2.25px solid currentColor;
+  border-left: 2.25px solid currentColor;
+  transform: translateX(2px) rotate(45deg);
+}
+
+.back-button:hover {
+  background: rgba(255, 255, 255, 0.56);
 }
 
 .back-button:active {
   background: var(--accent-soft);
+  transform: scale(0.96);
+}
+
+.back-button:focus-visible {
+  outline: 3px solid rgba(22, 140, 130, 0.22);
+  outline-offset: 1px;
 }
 
 .eyebrow,
