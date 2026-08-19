@@ -30,8 +30,8 @@ test("server-renders both nutrition intake entry choices", async () => {
   const html = await response.text();
   assert.match(html, /<html lang="zh-CN">/i);
   assert.match(html, /<title>个人营养咨询信息采集<\/title>/i);
-  assert.match(html, /咨询前信息采集/);
-  assert.match(html, /从更适合你的入口开始/);
+  assert.match(html, /营养咨询/);
+  assert.match(html, /选择你的方向/);
   assert.match(html, /运动表现提升/);
   assert.match(html, /日常健康管理/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/i);

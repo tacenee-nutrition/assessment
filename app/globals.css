@@ -77,7 +77,7 @@ button:disabled {
   min-height: calc(100svh - 48px);
   margin: 0 auto;
   overflow: hidden;
-  padding: 20px 3px 12px;
+  padding: 54px 3px 24px;
 }
 
 .entry-canvas::before,
@@ -91,7 +91,7 @@ button:disabled {
 }
 
 .entry-canvas::before {
-  top: 108px;
+  top: 54px;
   right: -140px;
   width: 300px;
   height: 300px;
@@ -106,65 +106,28 @@ button:disabled {
   background: rgba(22, 140, 130, 0.1);
 }
 
-.entry-brand {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  margin: 0 3px 46px;
-}
-
-.entry-brand-mark {
-  display: grid;
-  width: 42px;
-  height: 42px;
-  place-items: center;
-  border-radius: 14px;
-  background: var(--brand);
-  color: var(--lime);
-  font-family: var(--font-geist-mono), monospace;
-  font-size: 18px;
-  font-weight: 850;
-}
-
-.entry-brand p,
-.entry-brand strong,
-.entry-intro p,
-.entry-guide p {
+.entry-intro p {
   margin: 0;
 }
 
-.entry-brand p {
-  color: var(--action);
-  font-size: 10px;
-  font-weight: 760;
-  letter-spacing: 0.14em;
-}
-
-.entry-brand strong {
-  display: block;
-  margin-top: 4px;
-  color: var(--brand);
-  font-size: 15px;
-}
-
 .entry-intro {
-  margin: 0 3px 25px;
+  margin: 0 3px 22px;
 }
 
 .entry-intro h1 {
   max-width: 430px;
-  margin: 8px 0 12px;
+  margin: 8px 0 10px;
   color: var(--brand);
-  font-size: clamp(38px, 10vw, 52px);
-  line-height: 1.04;
-  letter-spacing: -0.055em;
+  font-size: clamp(36px, 9vw, 48px);
+  line-height: 1.08;
+  letter-spacing: -0.05em;
 }
 
 .entry-intro > p:last-child {
   max-width: 430px;
   color: var(--muted);
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
 .entry-choices {
@@ -175,11 +138,11 @@ button:disabled {
 .entry-choice {
   position: relative;
   display: flex;
-  min-height: 196px;
+  min-height: 150px;
   flex-direction: column;
   align-items: flex-start;
   overflow: hidden;
-  padding: 20px;
+  padding: 22px;
   border: 1px solid rgba(18, 48, 71, 0.12);
   border-radius: 26px;
   color: var(--ink);
@@ -248,22 +211,6 @@ button:disabled {
   color: var(--action);
 }
 
-.entry-choice-tag {
-  margin-bottom: 15px;
-  padding: 6px 9px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.1);
-  color: #c8d7de;
-  font-size: 10px;
-  font-weight: 730;
-  letter-spacing: 0.06em;
-}
-
-.entry-choice-health .entry-choice-tag {
-  background: var(--accent-soft);
-  color: var(--action);
-}
-
 .entry-choice > strong {
   color: inherit;
   font-size: 25px;
@@ -272,8 +219,8 @@ button:disabled {
 
 .entry-choice-description {
   display: block;
-  max-width: 360px;
-  margin-top: 8px;
+  max-width: calc(100% - 48px);
+  margin-top: 10px;
   color: #b9cbd3;
   font-size: 12px;
   line-height: 1.6;
@@ -283,22 +230,10 @@ button:disabled {
   color: var(--muted);
 }
 
-.entry-choice-footer {
-  display: flex;
-  width: 100%;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-top: auto;
-  padding-top: 17px;
-}
-
-.entry-choice-footer b {
-  font-size: 12px;
-  font-weight: 720;
-}
-
-.entry-choice-footer i {
+.entry-choice-arrow {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
   display: grid;
   width: 34px;
   height: 34px;
@@ -311,49 +246,13 @@ button:disabled {
   transition: transform 160ms ease;
 }
 
-.entry-choice-health .entry-choice-footer i {
+.entry-choice-health .entry-choice-arrow {
   background: var(--action);
   color: #fff;
 }
 
-.entry-choice:hover .entry-choice-footer i {
+.entry-choice:hover .entry-choice-arrow {
   transform: translateX(3px);
-}
-
-.entry-guide {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  margin: 16px 3px 0;
-  padding: 12px 13px;
-  border: 1px solid rgba(22, 140, 130, 0.16);
-  border-radius: 15px;
-  background: rgba(231, 245, 243, 0.74);
-}
-
-.entry-guide > span {
-  display: grid;
-  width: 23px;
-  height: 23px;
-  flex: 0 0 auto;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--action);
-  color: #fff;
-  font-size: 12px;
-  font-weight: 800;
-}
-
-.entry-guide p {
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.6;
-}
-
-.entry-guide strong {
-  display: block;
-  margin-bottom: 2px;
-  color: var(--brand);
 }
 
 .mobile-canvas {
@@ -1381,7 +1280,7 @@ button:disabled {
 @media (min-width: 720px) {
   .entry-canvas {
     min-height: calc(100svh - 48px);
-    padding: 28px 22px 26px;
+    padding: 62px 22px 28px;
     border: 1px solid var(--line);
     border-radius: 36px;
     background: rgba(255, 255, 255, 0.7);
