@@ -331,6 +331,14 @@ button:disabled {
   padding: 0 14px;
 }
 
+@supports (-webkit-touch-callout: none) {
+  .field input[type="date"],
+  .field input[type="time"] {
+    padding-inline: 0;
+    text-indent: 14px;
+  }
+}
+
 .field textarea {
   min-height: 82px;
   padding: 11px 14px;

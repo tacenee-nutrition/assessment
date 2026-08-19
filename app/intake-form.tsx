@@ -3,6 +3,7 @@
 import {
   type InputHTMLAttributes,
   type ReactNode,
+  useEffect,
   useId,
   useState,
 } from "react";
@@ -288,6 +289,14 @@ export default function IntakeForm() {
     "idle" | "exporting" | "success" | "error"
   >("idle");
 
+  useEffect(() => {
+    const frame = window.requestAnimationFrame(() => {
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    });
+
+    return () => window.cancelAnimationFrame(frame);
+  }, [step]);
+
   const updateSection = (
     section: "basic" | "training" | "nutrition" | "labs" | "sleep",
     field: string,
@@ -382,8 +391,10 @@ export default function IntakeForm() {
   })();
 
   const moveTo = (nextStep: number) => {
+    if (document.activeElement instanceof HTMLElement) {
+      document.activeElement.blur();
+    }
     setStep(nextStep);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   const next = () => {
