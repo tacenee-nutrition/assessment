@@ -3,7 +3,7 @@ import { rename, rm } from "node:fs/promises";
 import path from "node:path";
 
 const outputDirectory = path.resolve("dist/client");
-const nestedDirectory = path.join(outputDirectory, "sports-nutrition");
+const nestedDirectory = path.join(outputDirectory, "assessment");
 const nestedAssets = path.join(nestedDirectory, "_next");
 const publicAssets = path.join(outputDirectory, "_next");
 
@@ -15,4 +15,4 @@ await rm(publicAssets, { recursive: true, force: true });
 await rename(nestedAssets, publicAssets);
 await rm(nestedDirectory, { recursive: true, force: true });
 
-console.log("Prepared dist/client for the /sports-nutrition GitHub Pages path.");
+console.log("Prepared dist/client for the /assessment GitHub Pages path.");

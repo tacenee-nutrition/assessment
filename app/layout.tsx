@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-const assetBase = process.env.GITHUB_PAGES === "true" ? "/sports-nutrition" : "";
+const assetBase = process.env.GITHUB_PAGES === "true" ? "/assessment" : "";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
