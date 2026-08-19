@@ -1032,6 +1032,12 @@ button:disabled {
   }
 }
 
+@media (max-width: 480px) {
+  .time-grid {
+    display: block;
+  }
+}
+
 @media (max-width: 330px) {
   .macro-grid,
   .field-grid,

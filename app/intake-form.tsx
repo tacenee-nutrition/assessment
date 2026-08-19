@@ -863,7 +863,7 @@ export default function IntakeForm() {
                 updateSection("sleep", "regularity", value)
               }
             />
-            <div className="field-grid">
+            <div className="field-grid time-grid">
               <TextField
                 label="通常上床时间"
                 value={form.sleep.bedTime}
