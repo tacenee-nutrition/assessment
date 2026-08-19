@@ -22,16 +22,17 @@ async function render() {
   );
 }
 
-test("server-renders the nutrition intake experience", async () => {
+test("server-renders both nutrition intake entry choices", async () => {
   const response = await render();
   assert.equal(response.status, 200);
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
   assert.match(html, /<html lang="zh-CN">/i);
-  assert.match(html, /<title>运动营养咨询信息采集<\/title>/i);
+  assert.match(html, /<title>个人营养咨询信息采集<\/title>/i);
   assert.match(html, /咨询前信息采集/);
-  assert.match(html, /先认识一下你/);
-  assert.match(html, /身体基本信息/);
+  assert.match(html, /从更适合你的入口开始/);
+  assert.match(html, /运动表现提升/);
+  assert.match(html, /日常健康管理/);
   assert.doesNotMatch(html, /codex-preview|SkeletonPreview|react-loading-skeleton/i);
 });

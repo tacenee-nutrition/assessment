@@ -282,7 +282,7 @@ function SummaryCard({
   );
 }
 
-export default function IntakeForm() {
+export default function IntakeForm({ onExit }: { onExit: () => void }) {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState<FormState>(initialForm);
   const [exportStatus, setExportStatus] = useState<
@@ -1166,20 +1166,19 @@ export default function IntakeForm() {
       <div className="mobile-canvas">
         <header className="topbar">
           <div className="topbar-copy">
-            {step === 0 ? (
+            <button
+              className="back-button"
+              type="button"
+              aria-label={step === 0 ? "返回入口选择" : "返回上一步"}
+              onClick={() => (step === 0 ? onExit() : moveTo(step - 1))}
+            >
+              <span className="chevron-left-icon" aria-hidden="true" />
+            </button>
+            {step === 0 && (
               <div>
                 <p className="eyebrow">咨询前信息采集</p>
                 <p className="brand-title">运动营养档案</p>
               </div>
-            ) : (
-              <button
-                className="back-button"
-                type="button"
-                aria-label="返回上一步"
-                onClick={() => moveTo(step - 1)}
-              >
-                <span className="chevron-left-icon" aria-hidden="true" />
-              </button>
             )}
           </div>
           <div
