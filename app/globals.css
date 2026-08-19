@@ -268,7 +268,7 @@ button:disabled {
 .strength-grid,
 .lab-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
 }
 
@@ -309,11 +309,14 @@ button:disabled {
 .plain-input,
 .unit-input {
   position: relative;
+  min-width: 0;
 }
 
 .field input,
 .field textarea {
   width: 100%;
+  min-width: 0;
+  max-width: 100%;
   border: 1px solid var(--line);
   border-radius: 13px;
   outline: 0;
