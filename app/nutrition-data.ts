@@ -28,6 +28,7 @@ export const initialForm: FormState = {
     years: "",
     background: "",
     weeklyFrequency: "",
+    dailySessions: "",
     sessionDuration: "",
     zone2Duration: "",
     rpe: "5",

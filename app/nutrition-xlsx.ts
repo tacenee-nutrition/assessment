@@ -61,6 +61,7 @@ function profileFields(form: FormState): FieldDefinition[] {
     { section: "训练计划", key: "training.years", label: "训练年限", value: training.years, unit: "年", type: "数值" },
     { section: "训练计划", key: "training.background", label: "训练经历与背景", value: training.background },
     { section: "训练计划", key: "training.weeklyFrequency", label: "每周训练次数", value: training.weeklyFrequency, unit: "次/周", type: "数值" },
+    { section: "训练计划", key: "training.dailySessions", label: "每日训练次数", value: training.dailySessions, type: "选项" },
     { section: "训练计划", key: "training.sessionDuration", label: "单次训练时长", value: training.sessionDuration, unit: "分钟", type: "数值" },
     { section: "训练计划", key: "training.zone2Duration", label: "Zone 2 时长", value: training.zone2Duration, unit: "分钟", type: "数值" },
     { section: "训练计划", key: "training.rpe", label: "平均训练自觉强度 RPE", value: training.rpe, unit: "/10", type: "数值" },

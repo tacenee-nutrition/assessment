@@ -487,6 +487,14 @@ export default function IntakeForm({ onExit }: { onExit: () => void }) {
                 inputMode="numeric"
               />
             </div>
+            <ChoicePills
+              label="每天通常训练几次"
+              value={form.training.dailySessions}
+              options={["一天一练", "一天两练", "一天多练"]}
+              onChange={(value) =>
+                updateSection("training", "dailySessions", value)
+              }
+            />
             <TextAreaField
               label="训练经历与背景"
               value={form.training.background}
@@ -1055,6 +1063,10 @@ export default function IntakeForm({ onExit }: { onExit: () => void }) {
               value: form.training.weeklyFrequency
                 ? `每周 ${form.training.weeklyFrequency} 次`
                 : "",
+            },
+            {
+              label: "每日训练次数",
+              value: form.training.dailySessions,
             },
             {
               label: "单次时长 / RPE",
