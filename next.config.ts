@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
     ? {
         output: "export" as const,
         assetPrefix: "/assessment",
-        trailingSlash: true,
+        trailingSlash: false,
       }
     : {}),
 };

@@ -255,6 +255,73 @@ button:disabled {
   transform: translateX(3px);
 }
 
+.weekly-entry-link {
+  display: flex;
+  min-height: 78px;
+  align-items: center;
+  gap: 13px;
+  margin-top: 14px;
+  padding: 13px 16px;
+  border: 1px solid rgba(18, 48, 71, 0.12);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--brand);
+  text-decoration: none;
+  box-shadow: 0 12px 32px rgba(18, 48, 71, 0.06);
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+.weekly-entry-link:hover {
+  border-color: var(--action);
+  transform: translateY(-1px);
+}
+
+.weekly-entry-link:focus-visible {
+  outline: 3px solid rgba(22, 140, 130, 0.3);
+  outline-offset: 3px;
+}
+
+.weekly-entry-index {
+  display: grid;
+  width: 38px;
+  height: 38px;
+  flex: 0 0 auto;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--accent-soft);
+  color: var(--action);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.weekly-entry-copy {
+  min-width: 0;
+}
+
+.weekly-entry-copy strong,
+.weekly-entry-copy small {
+  display: block;
+}
+
+.weekly-entry-copy strong {
+  font-size: 14px;
+}
+
+.weekly-entry-copy small {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.weekly-entry-link > i {
+  margin-left: auto;
+  color: var(--action);
+  font-size: 20px;
+  font-style: normal;
+}
+
 .mobile-canvas {
   position: relative;
   width: min(100%, 520px);
@@ -375,6 +442,56 @@ button:disabled {
 .progress span.is-active {
   background: var(--lime);
   box-shadow: inset 0 0 0 1px rgba(18, 48, 71, 0.08);
+}
+
+.weekly-question-list {
+  display: grid;
+  gap: 4px;
+}
+
+.weekly-field-hint {
+  display: block;
+  margin: 6px 2px 0;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 450;
+  line-height: 1.5;
+}
+
+.weekly-choice-pills {
+  grid-template-columns: repeat(auto-fit, minmax(106px, 1fr));
+}
+
+.weekly-choice-field .field-hint,
+.weekly-range-field .field-hint {
+  margin: 8px 0 0;
+}
+
+.weekly-range-field {
+  margin-bottom: 17px;
+}
+
+.weekly-range-field .range-heading small,
+.weekly-choice-field legend small {
+  margin-left: 7px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.weekly-intro-note {
+  margin-top: 4px;
+}
+
+.weekly-alert-note {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border: 1px solid rgba(163, 51, 44, 0.16);
+  border-radius: 14px;
+  background: #fff0ef;
+  color: #8e302b;
+  font-size: 12px;
+  line-height: 1.6;
 }
 
 .progress span:last-child.is-active {

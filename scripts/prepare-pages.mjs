@@ -1,5 +1,5 @@
 import { existsSync } from "node:fs";
-import { rename, rm } from "node:fs/promises";
+import { mkdir, rename, rm } from "node:fs/promises";
 import path from "node:path";
 
 const outputDirectory = path.resolve("dist/client");
@@ -13,6 +13,14 @@ if (!existsSync(nestedAssets)) {
 
 await rm(publicAssets, { recursive: true, force: true });
 await rename(nestedAssets, publicAssets);
+
+const feedbackPage = path.join(outputDirectory, "weekly-feedback.html");
+if (existsSync(feedbackPage)) {
+  const feedbackDirectory = path.join(outputDirectory, "weekly-feedback");
+  await mkdir(feedbackDirectory, { recursive: true });
+  await rename(feedbackPage, path.join(feedbackDirectory, "index.html"));
+}
+
 await rm(nestedDirectory, { recursive: true, force: true });
 
 console.log("Prepared dist/client for the /assessment GitHub Pages path.");

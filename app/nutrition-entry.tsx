@@ -49,6 +49,14 @@ export default function NutritionEntry() {
               <i className="entry-choice-arrow" aria-hidden="true">→</i>
             </button>
           </div>
+          <a className="weekly-entry-link" href="weekly-feedback/">
+            <span className="weekly-entry-index">03</span>
+            <span className="weekly-entry-copy">
+              <strong>CrossFit 运动员每周反馈</strong>
+              <small>按周回顾训练、营养、睡眠与恢复</small>
+            </span>
+            <i aria-hidden="true">→</i>
+          </a>
         </div>
       </main>
 
