@@ -12,6 +12,14 @@ import { downloadWeeklyFeedbackWorkbook } from "./weekly-feedback-xlsx";
 const PREVIEW_STEP = WEEKLY_FEEDBACK_STEPS.length;
 const TOTAL_STEPS = WEEKLY_FEEDBACK_STEPS.length + 1;
 
+function localDateInputValue() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  return year + "-" + month + "-" + day;
+}
+
 function QuestionField({
   question,
   value,
@@ -155,26 +163,9 @@ function QuestionField({
   );
 }
 
-function FormCard({
-  number,
-  title,
-  subtitle,
-  children,
-}: {
-  number: string;
-  title: string;
-  subtitle?: string;
-  children: ReactNode;
-}) {
+function FormCard({ children }: { children: ReactNode }) {
   return (
     <section className="form-card">
-      <div className="card-heading">
-        <span className="card-number">{number}</span>
-        <div>
-          <h2>{title}</h2>
-          {subtitle && <p>{subtitle}</p>}
-        </div>
-      </div>
       <div className="weekly-question-list">{children}</div>
     </section>
   );
@@ -222,6 +213,12 @@ export default function WeeklyFeedbackForm() {
   >("idle");
 
   useEffect(() => {
+    setAnswers((current) =>
+      current.weekEnd ? current : { ...current, weekEnd: localDateInputValue() },
+    );
+  }, []);
+
+  useEffect(() => {
     const frame = window.requestAnimationFrame(() => {
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     });
@@ -249,7 +246,7 @@ export default function WeeklyFeedbackForm() {
     step === 0 && !answers.athleteName?.trim()
       ? "请填写姓名"
       : step === 0 && (!answers.weekStart || !answers.weekEnd)
-        ? "请填写完整的周一至周日反馈日期"
+        ? "请填写开始和结束日期"
         : step === 0 && !dateRangeIsValid
           ? "结束日期不能早于开始日期"
           : "基础信息已就绪，可以继续";
@@ -282,9 +279,9 @@ export default function WeeklyFeedbackForm() {
     <div className="review-stack">
       {WEEKLY_FEEDBACK_STEPS.map((item, index) => (
         <SummaryCard
-          key={item.kicker}
+          key={item.title}
           number={String(index + 1).padStart(2, "0")}
-          title={item.kicker}
+          title={item.title}
           answers={answers}
           questions={item.fields}
           onEdit={() => moveTo(index)}
@@ -387,30 +384,14 @@ export default function WeeklyFeedbackForm() {
         </div>
 
         <section className="intro-block" aria-live="polite">
-          <p className="section-kicker">
-            {step === PREVIEW_STEP ? "资料预览" : currentStep.kicker}
-          </p>
           <h1>
-            {step === PREVIEW_STEP ? "核对本周反馈" : currentStep.title}
+            {step === PREVIEW_STEP ? "反馈预览" : currentStep.title}
           </h1>
-          <p>
-            {step === PREVIEW_STEP
-              ? "可返回任意模块修改。确认后下载 XLSX 问卷。"
-              : currentStep.description}
-          </p>
         </section>
 
         <div className="step-stage" key={step}>
-          {step < PREVIEW_STEP ? (
-            <FormCard
-              number={String(step + 1).padStart(2, "0")}
-              title={currentStep.title}
-              subtitle={
-                step === 0
-                  ? "先填写姓名和反馈日期，其余内容均可选填"
-                  : "不知道的项目可填写“不确定”，其他问题可留空"
-              }
-            >
+        {step < PREVIEW_STEP ? (
+            <FormCard>
               {currentStep.fields.map((question) => (
                 <QuestionField
                   key={question.key}

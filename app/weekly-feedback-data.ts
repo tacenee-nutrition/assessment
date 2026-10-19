@@ -24,9 +24,7 @@ export type FeedbackQuestion = {
 };
 
 export type FeedbackStep = {
-  kicker: string;
   title: string;
-  description: string;
   fields: FeedbackQuestion[];
 };
 
@@ -34,10 +32,7 @@ export type WeeklyFeedbackAnswers = Record<string, string>;
 
 export const WEEKLY_FEEDBACK_STEPS: FeedbackStep[] = [
   {
-    kicker: "基本信息",
-    title: "先确认反馈周期",
-    description:
-      "建议每周固定同一时间填写，约需 5–8 分钟。尽量依据记录填写；不知道可写“不确定”，不用猜测。",
+    title: "基本信息",
     fields: [
       {
         key: "athleteName",
@@ -47,20 +42,14 @@ export const WEEKLY_FEEDBACK_STEPS: FeedbackStep[] = [
         required: true,
       },
       {
-        key: "clientId",
-        label: "客户编号",
-        kind: "text",
-        placeholder: "如有，请填写",
-      },
-      {
         key: "weekStart",
-        label: "反馈周期开始日期（周一）",
+        label: "开始日期",
         kind: "date",
         required: true,
       },
       {
         key: "weekEnd",
-        label: "反馈周期结束日期（周日）",
+        label: "结束日期",
         kind: "date",
         required: true,
       },
@@ -74,10 +63,7 @@ export const WEEKLY_FEEDBACK_STEPS: FeedbackStep[] = [
     ],
   },
   {
-    kicker: "身体数据",
-    title: "回顾本周身体数据",
-    description:
-      "关注一周趋势，不要只根据单日体重变化判断。所有数据均可留空。",
+    title: "身体数据",
     fields: [
       {
         key: "dailyWeights",
@@ -95,29 +81,41 @@ export const WEEKLY_FEEDBACK_STEPS: FeedbackStep[] = [
         step: 0.1,
       },
       {
-        key: "previousAverageWeight",
-        label: "上周平均体重（如已计算）",
-        kind: "number",
-        unit: "kg",
-        placeholder: "用于比较趋势",
-        step: 0.1,
-      },
-      {
         key: "waist",
-        label: "腰围（如本阶段需要，每周一次）",
+        label: "腰围",
         kind: "number",
         unit: "cm",
         placeholder: "可留空",
         step: 0.1,
-        hint: "固定测量位置和条件；不要求每位运动员每周测量。",
+      },
+      {
+        key: "armCircumference",
+        label: "臂围",
+        kind: "number",
+        unit: "cm",
+        placeholder: "可留空",
+        step: 0.1,
+      },
+      {
+        key: "hipCircumference",
+        label: "臀围",
+        kind: "number",
+        unit: "cm",
+        placeholder: "可留空",
+        step: 0.1,
+      },
+      {
+        key: "chestCircumference",
+        label: "胸围",
+        kind: "number",
+        unit: "cm",
+        placeholder: "可留空",
+        step: 0.1,
       },
     ],
   },
   {
-    kicker: "训练负荷与表现",
-    title: "训练计划完成得如何",
-    description:
-      "请尽量记录实际训练内容和关键表现变化。整体训练 RPE 的评分方向为 1 很轻松、10 极限。",
+    title: "训练情况",
     fields: [
       {
         key: "plannedSessions",
@@ -180,10 +178,7 @@ export const WEEKLY_FEEDBACK_STEPS: FeedbackStep[] = [
     ],
   },
   {
-    kicker: "营养执行",
-    title: "还原本周的饮食情况",
-    description:
-      "如有饮食记录可参考 App 周平均；没有记录也可以描述实际情况。执行度低时，先记录遇到的障碍。",
+    title: "营养摄入",
     fields: [
       {
         key: "nutritionAdherence",
@@ -283,10 +278,7 @@ export const WEEKLY_FEEDBACK_STEPS: FeedbackStep[] = [
     ],
   },
   {
-    kicker: "水分与胃肠道",
-    title: "检查补水和肠胃耐受",
-    description:
-      "普通日与长时间或高温训练日分开描述，会更容易看出变化。",
+    title: "水分与肠胃",
     fields: [
       {
         key: "dailyWater",
@@ -325,10 +317,7 @@ export const WEEKLY_FEEDBACK_STEPS: FeedbackStep[] = [
     ],
   },
   {
-    kicker: "睡眠与恢复",
-    title: "看看身体如何恢复",
-    description:
-      "尽量填写一周平均，并与自己的日常基线比较。设备数据不需要追求绝对准确。",
+    title: "睡眠与恢复",
     fields: [
       {
         key: "averageSleep",
@@ -417,10 +406,7 @@ export const WEEKLY_FEEDBACK_STEPS: FeedbackStep[] = [
     ],
   },
   {
-    kicker: "健康与风险",
-    title: "记录健康状态和需要关注的情况",
-    description:
-      "如有严重或急性的警讯，请及时寻求医疗帮助，不要等待营养师查看每周反馈。",
+    title: "健康状况",
     fields: [
       {
         key: "healthChanges",
@@ -451,10 +437,7 @@ export const WEEKLY_FEEDBACK_STEPS: FeedbackStep[] = [
     ],
   },
   {
-    kicker: "生活与执行障碍",
-    title: "找出本周最难执行的部分",
-    description:
-      "工作、学习、压力和生活安排都会影响计划执行。描述障碍有助于找到现实可行的调整。",
+    title: "生活与执行",
     fields: [
       {
         key: "stress",
@@ -495,10 +478,7 @@ export const WEEKLY_FEEDBACK_STEPS: FeedbackStep[] = [
     ],
   },
   {
-    kicker: "下周计划",
-    title: "为下周做好准备",
-    description:
-      "说明训练与生活安排的变化，也可以告诉营养师你最希望先解决的问题。",
+    title: "下周安排",
     fields: [
       {
         key: "nextWeekTraining",

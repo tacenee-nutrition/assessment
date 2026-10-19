@@ -63,7 +63,7 @@ function buildWeeklyFeedbackWorkbook(answers: WeeklyFeedbackAnswers) {
       index += 1;
       rows.push([
         bodyCell(String(index), { align: "center" }),
-        bodyCell(step.kicker),
+        bodyCell(step.title),
         bodyCell(question.label),
         bodyCell((answers[question.key] ?? "").trim()),
         bodyCell(question.hint ?? ""),
