@@ -240,7 +240,11 @@ export default function WeeklyFeedbackForm() {
       answers.weekEnd &&
       dateRangeIsValid,
   );
-  const stepIsValid = step === 0 ? firstStepIsValid : true;
+  const missingRequiredQuestion = (currentStep?.fields ?? []).some(
+    (question) => question.required && !answers[question.key]?.trim(),
+  );
+  const stepIsValid =
+    step === 0 ? firstStepIsValid : !missingRequiredQuestion;
 
   const validationMessage =
     step === 0 && !answers.athleteName?.trim()
@@ -421,7 +425,13 @@ export default function WeeklyFeedbackForm() {
 
         {step < PREVIEW_STEP && (
           <div className="bottom-action">
-            <p>{step === 0 ? validationMessage : "本页问题均可选填，可以继续填写"}</p>
+            <p>
+              {step === 0
+                ? validationMessage
+                : missingRequiredQuestion
+                  ? "请填写本页必填项目"
+                  : "其余问题可留空，可以继续填写"}
+            </p>
             <button type="button" disabled={!stepIsValid} onClick={next}>
               {step === PREVIEW_STEP - 1 ? "查看反馈预览" : "继续填写"}
               <span aria-hidden="true">→</span>
